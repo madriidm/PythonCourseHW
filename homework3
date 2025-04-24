@@ -1,0 +1,80 @@
+# Exercise 1: No More Pennies
+def main():
+    pennies_per_nickel = 5
+    nickel = 0.05
+    total = 0.0
+
+    while True:
+        price = input("Enter item price (blank to finish): ")
+        if price == "":
+            break
+        total += float(price)
+
+    print(f"Total: ${total:.2f}")
+
+    pennies = round(total * 100)
+    remainder = pennies % 5
+
+    if remainder < 2.5:
+        cash_total = (pennies - remainder) / 100
+    else:
+        cash_total = (pennies + (5 - remainder)) / 100
+
+    print(f"Amount due (cash): ${cash_total:.2f}")
+
+if __name__ == "__main__":
+    main()
+
+# Exercise 2: Check a Password
+def checkPassword(password):
+    has_upper = False
+    has_lower = False
+    has_digit = False
+
+    for ch in password:
+        if ch.isupper():
+            has_upper = True
+        elif ch.islower():
+            has_lower = True
+        elif ch.isdigit():
+            has_digit = True
+
+    return len(password) >= 8 and has_upper and has_lower and has_digit
+
+def main():
+    p = input("Enter a password: ")
+    if checkPassword(p):
+        print("Good password")
+    else:
+        print("Bad password")
+
+if __name__ == "__main__":
+    main()
+
+# Exercise 3: Negatives, Zeros and Positives
+def main():
+    negatives = []
+    zeros = []
+    positives = []
+
+    while True:
+        line = input("Enter an integer (blank to finish): ")
+        if line == "":
+            break
+        value = int(line)
+        if value < 0:
+            negatives.append(value)
+        elif value == 0:
+            zeros.append(value)
+        else:
+            positives.append(value)
+
+    for n in negatives:
+        print(n)
+    for n in zeros:
+        print(n)
+    for n in positives:
+        print(n)
+
+if __name__ == "__main__":
+    main()
